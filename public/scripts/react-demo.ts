@@ -3,23 +3,21 @@
 /* -------------------------------------------------------------------------- */
 import React from "../lib/react.js";
 import ReactDOM from "../lib/react-dom/client.js";
+import { Greeting } from "./greeting";
 
-let heading = React.createElement("h1", {}, "안녕!");
-
-const changeButton = React.createElement(
-  "button",
-  { type: "button" },
-  "인사말"
-);
-
-const wrapper = React.createElement(
-  React.Fragment,
-  null,
-  heading,
-  changeButton
-);
+// 컴포넌트 추출(Extracting Components)
+import Wrapper from "../components/wrapper";
 
 const rootElement = document.getElementById("react");
 const reactDomRoot = ReactDOM.createRoot(rootElement);
 
-reactDomRoot.render(wrapper);
+const langs = Object.keys(Greeting);
+
+function render() {
+  const lang = langs[Math.floor(Math.random() * langs.length)];
+  const message = Greeting[lang];
+
+  reactDomRoot.render(React.createElement(Wrapper, { lang, message, render }));
+}
+
+render();

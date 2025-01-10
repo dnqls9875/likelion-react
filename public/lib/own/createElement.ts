@@ -9,7 +9,7 @@ function createElement(
     type,
     props: {
       ...props,
-      children,
+      children, // child []
     },
   };
 }
