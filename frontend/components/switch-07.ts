@@ -1,15 +1,5 @@
 import React from "../lib/react.js";
 
-// --------------------------------------------------------------------------
-// ✅ Switch 컴포넌트 작성(실습)
-// --------------------------------------------------------------------------
-// - [✅] switch 역할(role) 설정
-// - [✅] aria-checked 속성을 사용해 ON/OFF 상태 설정
-// - [ ] ON/OFF 텍스트를 화면에 표시하더라도 aria-hidden 속성을 사용해 읽지 않도록 설정
-// - [ ] 사용자가 Space, Enter(옵션) 키를 눌렀을 때 작동되도록 설정
-// - [ ] 비활성 상태인 경우, aria-disabled 속성을 사용해 설정
-// --------------------------------------------------------------------------
-
 const h = React.createElement;
 
 interface SwitchProps {
@@ -17,7 +7,7 @@ interface SwitchProps {
   disabled?: boolean;
   showOnOffText?: boolean;
   children: React.ReactNode;
-  onToggle?: () => void;
+  onToggle?: () => void; // (() => void) | undefined
 }
 
 type SwitchText = "ON" | "OFF" | null;
@@ -42,17 +32,12 @@ function Switch({
   }
 
   const handleClick = () => {
-    if (disabled) return;
+    // if (onToggle && typeof onToggle === 'function') {
+    //   onToggle();
+    // }
+
+    // 옵셔널 체이닝을 사용한 함수 실행 여부 조건 처리
     onToggle?.();
-  };
-
-  const handlekeyControl = (e: KeyboardEvent) => {
-    const key = e.code;
-    const shiftKey = !!e.shiftKey;
-
-    if (!disabled && !shiftKey && (key === "Space" || key === "Enter")) {
-      console.log("눌러라 스페이스바 혹은 엔터를");
-    }
   };
 
   return h(
@@ -63,8 +48,8 @@ function Switch({
       "aria-disabled": disabled,
       tabIndex: 0,
       className: "Switch",
+      // onClick: onToggle,
       onClick: handleClick,
-      onKeyDown: handlekeyControl,
     },
     h("span", { className: "Switch--label" }, children),
     h(
