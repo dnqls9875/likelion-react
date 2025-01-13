@@ -1,6 +1,6 @@
 import React from "../lib/react.js";
 import ReactDOM from "../lib/react-dom/client.js";
-import App from "./app"; //! (.ts 브라우저 해석 X, ts-browser에서 해석) -> js가 안되는 이유 js는 브라우저가 해석하려고 하기 때문에
+import App from "./app.tsx"; //! (.ts 브라우저 해석 X, ts-browser에서 해석) -> js가 안되는 이유 js는 브라우저가 해석하려고 하기 때문에
 
 const root = document.getElementById("react");
 
