@@ -1,4 +1,5 @@
 import React from "../lib/react.js";
+import Switch from "../components/switch";
 
 // hyperscript 함수 : 마크업을 생성하는 JavaScript  // Vue 공식문서 참고해보기 https://ko.vuejs.org/guide/extras/render-function.html
 // JavaScript 마크업 처리 사용
@@ -18,8 +19,11 @@ function App(): React.ReactNode {
     {
       lang: "en",
       style: appStyles,
-    }
+    },
     // ? 컴포넌트의 자식들(children)
+    h(Switch, { active: true, showOnOffText: true }, "Wi-Fi"), // JSX: <Switch active>Wi-Fi</Switch>
+    h(Switch, { active: false }, "Bluetooth"), // JSX: <Switch>Bluetooth</Switch>
+    h(Switch, { disabled: true }, "Reduced Motion") // JSX: <Switch disabled>Reduced Motion</Switch>
   );
 }
 
