@@ -1,6 +1,7 @@
 import React from "../lib/react.js";
 import Switch from "../components/switch.tsx";
 import SwitchList from "../components/switch-list.tsx";
+import PlayGround from "../components/playground.tsx";
 
 /* Component ---------------------------------------------------------------- */
 
@@ -53,6 +54,7 @@ function App(): React.ReactNode {
   return (
     <div lang="en" style={appStyles}>
       <SwitchList items={list} />
+      <PlayGround />
     </div>
   );
 }
