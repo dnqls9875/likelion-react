@@ -28,6 +28,7 @@ function App(): React.ReactNode {
 
   return (
     <div lang="en" style={appStyles}>
+      {/* 함수형 컴포넌트 */}
       <SwitchList items={list} />
     </div>
   );
