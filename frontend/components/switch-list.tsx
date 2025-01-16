@@ -23,23 +23,42 @@ function SwitchList({ items }: SwitchListProps) {
   // React Hooks API (React.useState)
   // 어떤 상태? (과제 제출)
 
+  // [관심사] 과제 제출 상태 && 상태 업데이트 로직
   const [submission, setSubmission] = React.useState(false);
-
-  function switchSubmission() {
+  const handleToggleSubmisson = () => {
     const switchSubmission = !submission;
-  }
+    setSubmission(switchSubmission);
+  };
+
+  // [관심사] 복습 수행 상태 && 상태 업데이트 로직
+  const [review, setReview] = React.useState(true);
+  const handleToggleReview = () => {
+    const switchReview = !review;
+    setReview(switchReview);
+  };
+
+  // [관심사] 나의 수준 파악 상태 && 상태 업데이트 로직
+  const [level, setLevel] = React.useState(false);
+  const handleToggleLevel = () => {
+    const switchLevel = !level;
+    setLevel(switchLevel);
+  };
 
   return (
     <ul className="SwitchList" style={switchStyles}>
       <li>
-        <Switch
-          active={submission}
-          onToggle={() => {
-            const switchSubmission = !submission;
-            setSubmission(switchSubmission);
-          }}
-        >
+        <Switch active={level} onToggle={handleToggleLevel}>
+          정확한 나의 수준 판단
+        </Switch>
+      </li>
+      <li>
+        <Switch active={submission} onToggle={handleToggleSubmisson}>
           과제 제출
+        </Switch>
+      </li>
+      <li>
+        <Switch active={review} onToggle={handleToggleReview}>
+          의미있는 복습 수행
         </Switch>
       </li>
       {/* 조건부 디스플레이 (Conditional Display) */}
