@@ -1,4 +1,4 @@
-import React from "../lib/react.js";
+import React from '../lib/react.js';
 
 /*
   학습 주요 주제
@@ -23,25 +23,25 @@ type ListItem = {
   subject: string;
 };
 
-const ENDPOINT = "https://my-json-server.typicode.com/yamoo9/assets/vowels";
+const ENDPOINT = 'https://my-json-server.typicode.com/yamoo9/assets/vowels';
 
 export default function Playground() {
   const items: ListItem[] = [
     {
-      id: "react",
-      subject: "React",
+      id: 'react',
+      subject: 'React',
     },
     {
-      id: "next.js",
-      subject: "Next.js",
+      id: 'next.js',
+      subject: 'Next.js',
     },
     {
-      id: "typescript",
-      subject: "TypeScript",
+      id: 'typescript',
+      subject: 'TypeScript',
     },
     {
-      id: "react router",
-      subject: "React Router",
+      id: 'react router',
+      subject: 'React Router',
     },
   ];
 
@@ -90,11 +90,11 @@ export default function Playground() {
     // 1. DOM에서 .Playground 엘리먼트 찾기
     // 2. .Playground 엘리먼트 내부에서 .List 엘리먼트를 찾아 DOM 트리에서 삭제
     const playgroundElement =
-      document.querySelector<HTMLDivElement>(".Playground");
+      document.querySelector<HTMLDivElement>('.Playground');
 
     if (playgroundElement) {
       const listElement =
-        playgroundElement.querySelector<HTMLUListElement>(".List");
+        playgroundElement.querySelector<HTMLUListElement>('.List');
       if (listElement) {
         listElement.remove();
       }
@@ -107,10 +107,10 @@ export default function Playground() {
     return fetch(ENDPOINT)
       .then((response) => response.json())
       .then((data: { id: number; name: string; shape: string }[]) => {
-        const reactElement = document.getElementById("react");
+        const reactElement = document.getElementById('react');
 
         reactElement?.insertAdjacentHTML(
-          "beforeend",
+          'beforeend',
           /* html */ `
           <ul>
             ${data
@@ -121,7 +121,7 @@ export default function Playground() {
                   </li>
                 `;
               })
-              .join("")}
+              .join('')}
           </ul>
         `
         );
@@ -136,7 +136,7 @@ export default function Playground() {
         onClick={async () => {
           handleDeleteList();
           await handleRenderingListFromAsyncData();
-          console.log("compolete rendering");
+          console.log('compolete rendering');
         }}
       >
         delete list element

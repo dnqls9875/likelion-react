@@ -1,2 +1,2 @@
-export * from "https://esm.sh/jsx-runtime?dev";
-export { default } from "https://esm.sh/jsx-runtime?dev";
+export * from 'https://esm.sh/react/jsx-runtime?dev';
+export { default } from 'https://esm.sh/react/jsx-runtime?dev';

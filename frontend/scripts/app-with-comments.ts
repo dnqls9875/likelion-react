@@ -1,4 +1,4 @@
-import React from "../lib/react.js";
+import React from '../lib/react.js';
 
 // hyperscript 함수
 // JavaScript 마크업 처리 사용
@@ -13,7 +13,7 @@ function App(): React.ReactNode {
   // VDOM을 구성하는 가상 노드(vNode) 생성
   return h(
     /* type: HTML 컴포넌트(태그) 이름 or React 빌트인 컴포넌트 or 사용자 정의 컴포넌트 */
-    "div",
+    'div',
     /* 컴포넌트 속성(props, 외부에서 전달되는 데이터) */
     {
       style: appStyles,
@@ -24,8 +24,8 @@ function App(): React.ReactNode {
 
 // 앱 스타일 맵(객체)
 const appStyles = {
-  display: "flex",
-  flexFlow: "column",
+  display: 'flex',
+  flexFlow: 'column',
   gap: 12,
   padding: 20,
 };

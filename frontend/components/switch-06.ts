@@ -7,7 +7,7 @@
 // - [ ] 사용자가 Space, Enter(옵션) 키를 눌렀을 때 작동되도록 설정
 // - [x] 비활성 상태인 경우, aria-disabled 속성을 사용해 설정
 // --------------------------------------------------------------------------
-import React from "../lib/react.js";
+import React from '../lib/react.js';
 
 const h = React.createElement;
 
@@ -18,7 +18,7 @@ interface SwitchProps {
   children: React.ReactNode;
 }
 
-type SwitchText = "ON" | "OFF" | null;
+type SwitchText = 'ON' | 'OFF' | null;
 
 function Switch({
   active = false,
@@ -37,33 +37,33 @@ function Switch({
   //   switchText = null;
   // }
 
-  let switchText: SwitchText = !showOnOffText ? null : active ? "ON" : "OFF";
+  let switchText: SwitchText = !showOnOffText ? null : active ? 'ON' : 'OFF';
 
   // [미션] 3항 연산자 식을 조건문으로 변경해보세요.
   let switchTextNode = null;
 
   if (switchText) {
     switchTextNode = h(
-      "span",
-      { className: "Switch--text", "aria-hidden": true },
+      'span',
+      { className: 'Switch--text', 'aria-hidden': true },
       switchText
     );
   }
 
   return h(
-    "div",
+    'div',
     {
-      role: "switch",
-      "aria-checked": active,
-      "aria-disabled": disabled,
+      role: 'switch',
+      'aria-checked': active,
+      'aria-disabled': disabled,
       tabIndex: 0,
-      className: "Switch",
+      className: 'Switch',
     },
-    h("span", { className: "Switch--label" }, children),
+    h('span', { className: 'Switch--label' }, children),
     h(
-      "span",
-      { className: "Switch--info" },
-      h("span", { className: "Switch--knob" }),
+      'span',
+      { className: 'Switch--info' },
+      h('span', { className: 'Switch--knob' }),
       switchTextNode
     )
   );

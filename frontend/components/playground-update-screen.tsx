@@ -1,4 +1,4 @@
-import React from "../lib/react.js";
+import React from '../lib/react.js';
 
 let renderCount: number = 0;
 
@@ -13,7 +13,7 @@ export default function Playground() {
   // const loveIconsState = React.useState('❤️' /* 초깃값 */);
   // 배열 구조 분해 할당
   // const [state, updater] = React.useState(initialValue);
-  const [loveIcons, setLoveIcons] = React.useState("❤️" /* 초깃값 */);
+  const [loveIcons, setLoveIcons] = React.useState('❤️' /* 초깃값 */);
 
   // 리액트 화면에 렌더링 1회
   // 개발 중 StrictMode를 사용하면 2회 렌더링
@@ -30,8 +30,8 @@ export default function Playground() {
         type="button"
         aria-label="하트"
         onClick={() => {
-          console.log("하트 +1 추가~");
-          setLoveIcons(loveIcons + "❤️");
+          console.log('하트 +1 추가~');
+          setLoveIcons(loveIcons + '❤️');
         }}
       >
         <svg

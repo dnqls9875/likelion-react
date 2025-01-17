@@ -1,12 +1,16 @@
-@import "./normalize.css";
+@import './normalize.css';
 
-html {
+:root {
   font-size: 62.5%;
-  background-color: rgba(0, 0, 0, 5%);
 }
 
 body {
   min-height: 100vh;
   margin: 0;
   font: 1.6rem/1.5 Verdana;
+}
+
+button,
+input {
+  font-size: inherit;
 }

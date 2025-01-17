@@ -1,18 +1,10 @@
-import React from "../lib/react.js";
-import type { List } from "../types/list.ts";
-import Switch from "./switch.tsx";
+import React from '../lib/react.js';
+import type { List, ListItem } from '../types/list.ts';
+import Switch from './switch.tsx';
 
 interface SwitchListProps {
   items: List;
 }
-
-const switchStyles = {
-  display: "flex",
-  flexFlow: "column",
-  gap: 12,
-  listStyle: "none",
-  paddingInlineStart: 0,
-};
 
 function SwitchList({ items }: SwitchListProps) {
   const [state, setState] = React.useState(() => {
@@ -23,31 +15,23 @@ function SwitchList({ items }: SwitchListProps) {
   });
 
   const handleToggleState = (selectedId: string) => {
-    const nextState = state.map(
-      (item: { id: string; children: string; active: boolean }) => {
-        if (selectedId === item.id) {
-          return {
-            ...item,
-            active: !item.active,
-          };
-        }
-        return item;
-      }
+    setState(
+      state.map((item: ListItem) =>
+        selectedId === item.id
+          ? {
+              ...item,
+              active: !item.active,
+            }
+          : item
+      )
     );
-    setState(nextState);
   };
 
   return (
     <ul className="SwitchList" style={switchStyles}>
-      {/* 조건부 디스플레이 (Conditional Display) */}
       {state.map(({ id, active, children }) => (
         <li key={id}>
-          <Switch
-            active={active}
-            onToggle={() => {
-              handleToggleState(id);
-            }}
-          >
+          <Switch active={active} onToggle={() => handleToggleState(id)}>
             {children}
           </Switch>
         </li>
@@ -57,3 +41,11 @@ function SwitchList({ items }: SwitchListProps) {
 }
 
 export default SwitchList;
+
+const switchStyles = {
+  display: 'flex',
+  flexFlow: 'column',
+  gap: 12,
+  listStyle: 'none',
+  paddingInlineStart: 0,
+};
