@@ -1,4 +1,4 @@
-import React from '../lib/react.js';
+import React from "../lib/react.js";
 
 /* -------------------------------------------------------------------------- */
 /* Render Props & Higher-Order Component                                      */
@@ -7,9 +7,13 @@ import React from '../lib/react.js';
 export default function RenderPropsAndHOC() {
   return (
     <div className="RenderPropsAndHOC">
-      <ReactClassComponent>
-        <ReactFunctionComponent dateInfo={{ iso: '', ko: '' }} />
-      </ReactClassComponent>
+      <ReactClassComponent
+        render={(dateInfo: DateInfo) => {
+          // 렌더링 (JSX: React Element 반환)
+
+          return <ReactFunctionComponent dateInfo={dateInfo} />;
+        }}
+      />
       <AnotherReactClassComponent />
     </div>
   );
@@ -19,7 +23,7 @@ export default function RenderPropsAndHOC() {
 
 class ReactClassComponent extends React.Component {
   props: {
-    children: React.ReactNode;
+    render?: (dateInfo: DateInfo) => React.ReactElement;
     rules?: string[];
     getRule?: (id: number) => { id: number; content: string }[];
   };
@@ -31,6 +35,7 @@ class ReactClassComponent extends React.Component {
     return (
       <section>
         <h2>React 규칙 준수</h2>
+        {this.props.render?.(dateInfo)}
       </section>
     );
   }
@@ -70,7 +75,7 @@ function ReactFunctionComponent({ dateInfo }: { dateInfo: DateInfo }) {
 
 function getDateInfo(): DateInfo {
   const d = new Date();
-  const [year, month, date] = d.toLocaleDateString().split('.');
+  const [year, month, date] = d.toLocaleDateString().split(".");
   return {
     iso: d.toISOString(),
     ko: `${year}년 ${month.trim()}월 ${date.trim()}일`,
