@@ -10,6 +10,11 @@ export default function RenderPropsAndHOC() {
       <ReactClassComponent
         render={(dateInfo: DateInfo) => {
           // 렌더링 (JSX: React Element 반환)
+          // render props 패턴을 사용해 하위 컴포넌트에 dataInfo 정보를 공유합니다.
+          // JSX === React.ReactElement
+          // 꼭 자식인 children 속성(prop)이 JSX여야 할까?
+          // 꼭 JSX일 필요는 없다. 그러면 모든  JavaScript 데이터는 자식이 될 수 없지만...
+          // 만약 자식으로 전달된 함수가 실행되어 그 결과가 JSX를 반환한다면? 가능합니다!
 
           return <ReactFunctionComponent dateInfo={dateInfo} />;
         }}
@@ -35,7 +40,8 @@ class ReactClassComponent extends React.Component {
     return (
       <section>
         <h2>React 규칙 준수</h2>
-        {this.props.render?.(dateInfo)}
+        {/* class 컴포넌트의 자식으로써 렌더링이 된다. */}
+        {this.props.render?.(/*데이터 전달 가능*/ dateInfo)}
       </section>
     );
   }
