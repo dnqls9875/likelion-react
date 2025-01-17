@@ -1,10 +1,13 @@
-import React from '../lib/react.js';
+import React from "../lib/react.js";
 
 /* -------------------------------------------------------------------------- */
 /* React 규칙                                                                  */
 /* -------------------------------------------------------------------------- */
 
 export default function RulesOfReact() {
+  const [name, setName] = React.useState("이우빈");
+  console.log(name, typeof setName);
+
   return (
     <div className="RulesOfReact">
       <ReactClassComponent>
@@ -72,7 +75,7 @@ function ReactFunctionComponent({ dateInfo }: { dateInfo: DateInfo }) {
 
 function getDateInfo(): DateInfo {
   const d = new Date();
-  const [year, month, date] = d.toLocaleDateString().split('.');
+  const [year, month, date] = d.toLocaleDateString().split(".");
   return {
     iso: d.toISOString(),
     ko: `${year}년 ${month.trim()}월 ${date.trim()}일`,
